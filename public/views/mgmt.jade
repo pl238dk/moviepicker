@@ -1,0 +1,15 @@
+doctype html
+html
+	head
+		title JSON list generator
+	body
+		h1 JSON list generator
+		form(method="post",action="/mgmt")
+			input(type="submit",value="Generate")
+			each movie in movies
+				div(class="movie")
+					img(class="movieposter",src="images/#{movie.poster}",width="50px",height="75px")
+					input(class="moviecheckbox",type="checkbox",name="movie",value="#{movie.poster}")
+					| #{movie.title}
+		script(src="scripts/stored.js")
+		script(src="scripts/check.js")

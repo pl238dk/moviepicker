@@ -1,15 +1,8 @@
 doctype html
 html
 	head
-		title JSON list generator
+		title JSON girlies
 	body
-		h1 JSON list generator
-		form(method="post",action="/")
-			input(type="submit",value="Generate")
-			each movie in movies
-				div(class="movie")
-					img(class="movieposter",src="images/#{movie}",width="50px",height="75px")
-					input(class="moviecheckbox",type="checkbox",name="movie",value="#{movie}")
-					| #{movie}
+		h1 Movie Time!
 		script(src="scripts/stored.js")
-		script(src="scripts/check.js")
+		script(src="scripts/display.js")

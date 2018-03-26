@@ -1,3 +1,4 @@
-titles/*
-posters/*
-public/images/*
+titles/
+posters/
+public/images/
+node_modules/

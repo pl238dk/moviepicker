@@ -1,1 +1,1 @@
-var stored = {}
+var stored = {"movie":["A Bugs Life (1998).jpg","A Goofy Movie (1995).jpg","Aladdin (1992).jpg","Angry Birds Movie (2016) the.jpg"]}

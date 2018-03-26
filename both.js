@@ -31,9 +31,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // when 'GET /mgmt http/1.1', read directory of posters and send to templating engine
 app.get('/mgmt', function(req, res){
-	populateJSON(null, function(data){
-		var combo = combineJSON(data);
-		res.render('mgmt', { movies : combo });
+	fs.readdir('posters', function(err, items){
+		// TODO : check Titles directory for supported chrome extensions (mp4/avi/mov)
+		// TODO : better yet, get rid of all avi/mov/mkv/m4a and convert all stored movies to mp4, kthxbye
+		res.render('mgmt',{ movies: items });
 	});
 });
 
@@ -41,11 +42,12 @@ app.get('/mgmt', function(req, res){
 app.post('/mgmt', function(req, res){
 	console.log(req.body);
 	fs.writeFile(__dirname + '/public/scripts/stored.js',"var stored = " + JSON.stringify(req.body));
-	populateJSON(null, function(data){
-		var combo = combineJSON(data);
-		res.render('mgmt', { movies : combo });
+	fs.readdir('posters', function(err, items){
+		res.render('mgmt',{ movies: items });
 	});
 });
+
+// ## end MGMT ################################# //
 
 var populateJSON = function(err, callback){
 	var results = {'posters':[],'titles':[]};
@@ -56,29 +58,19 @@ var populateJSON = function(err, callback){
 	callback(results);
 };
 
-var combineJSON = function(data){
-	var combo = [];
-	for (var i=0; i<data['posters'].length; i++){
-		for (var j=0; j<data['titles'].length; j++){
-			var t = data['titles'][j];
-			var p = data['posters'][i];
-			if (t.indexOf(p.split('.jpg')[0]) > -1){
-				combo.push(
-					{
-						'poster':p,
-						//'title':t.split('/')[0]
-						'title':t
-					}
-				);
-			};
-		};
-	};
-	return combo;
-};
-
-// ## end MGMT ################################# //
-
 // when 'GET / http/1.1', display data from 'stored.js'
 app.get('/', function(req, res){
-	res.render('index');
+	populateJSON(null, function(data){
+		var combo = [];
+		for (var i=0; i<data['posters'].length; i++){
+			for (var j=0; j<data['titles'].length; j++){
+				var t = data['titles'][j];
+				var p = data['posters'][i]
+				if (t.indexOf(p.split('.jpg')[0]) > -1){
+					combine.push({'poster':p,'title':t});
+				}
+			}
+		};
+		res.render('index', { movies : combo });
+	});
 });
