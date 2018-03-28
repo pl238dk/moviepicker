@@ -16,9 +16,10 @@ app.use('/',
 	express.static(__dirname + '/public')
 );
 
-// set default directories for views and images
+// set default directories for views, images, and styles
 app.set('views', __dirname + '/public/views');
 app.set('images', __dirname + '/public/images');
+app.set('styles', __dirname + '/public/styles');
 
 // jade/pug as templating engine
 app.set('view engine','jade');

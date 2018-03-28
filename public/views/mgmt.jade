@@ -1,15 +1,17 @@
 doctype html
 html
 	head
-		title JSON list generator
+		title Girlies Movie Management
+		link(href='styles/mgmt.css',rel='stylesheet')
 	body
-		h1 JSON list generator
+		h1 JSON movie-list generator
 		form(method="post",action="/mgmt")
 			input(type="submit",value="Generate")
-			each movie in movies
-				div(class="movie")
-					img(class="movieposter",src="images/#{movie.poster}",width="50px",height="75px")
-					input(class="moviecheckbox",type="checkbox",name="movie",value="#{movie.poster}")
-					| #{movie.title}
+			div(class="container")
+				each movie in movies
+					div(class="movie")
+						img(class="movieposter",src="images/#{movie.poster}")
+						input(class="moviecheckbox",type="checkbox",name="movie",value='{"poster": "#{movie.poster}", "file": "#{movie.title}"}')
+						| #{movie.title}
 		script(src="scripts/stored.js")
 		script(src="scripts/check.js")

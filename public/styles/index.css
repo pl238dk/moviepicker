@@ -1,0 +1,28 @@
+body {
+	background-color : #EF4E91;
+	box-shadow : 10px 10px 5px #BE1E79;
+}
+h1 {
+	background-color : #F8B9CE;
+	text-align: center;
+	border-radius : 20px 20px 0px 0px;
+	text-shadow : 2px 2px #FFF89B;
+	font-family: 'helvetica';
+	color: #EF4E91;
+	margin: 0;
+}
+.container {
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	justify-content: space-around;
+	background-color : #F8B9CE;
+	box-shadow : 10px 10px 5px #BE1E79;
+	border-radius : 0px 0px 20px 20px;
+}
+img {
+	box-shadow :    10px 10px 5px #BE1E79;
+	border-radius: 25px;
+	height: 300px;
+	width: 200px;
+	margin: 15px;
+}
