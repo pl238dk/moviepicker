@@ -16,6 +16,10 @@ app.use('/',
 	express.static(__dirname + '/public')
 );
 
+app.use('/play',
+	express.static(__dirname + '/titles')
+);
+
 // set default directories for views, images, and styles
 app.set('views', __dirname + '/public/views');
 app.set('images', __dirname + '/public/images');
@@ -79,7 +83,8 @@ var combineJSON = function(data){
 
 // ## end MGMT ################################# //
 
-// when 'GET / http/1.1', display data from 'stored.js'
+// when 'GET / HTTP/1.1', display data from 'stored.js'
 app.get('/', function(req, res){
 	res.render('index');
 });
+
